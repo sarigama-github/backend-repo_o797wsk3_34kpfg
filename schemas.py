@@ -19,6 +19,9 @@ class Task(BaseModel):
     id: str = Field(..., description="Client-generated id for the task")
     name: str = Field(..., description="Task title or description")
     time: Optional[str] = Field(None, description="Optional time like 06:30")
+    duration_minutes: Optional[int] = Field(None, ge=1, le=600, description="Estimated duration in minutes")
+    label: Optional[str] = Field(None, description="Optional label/category such as Focus, Health, Mindfulness")
+    reminder: bool = Field(False, description="Whether to trigger a local reminder notification for this task time")
     completed: bool = Field(False, description="Completion status")
 
 class Routine(BaseModel):
